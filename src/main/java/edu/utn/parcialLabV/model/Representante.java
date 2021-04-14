@@ -33,5 +33,7 @@ public class Representante extends Person{
                 montoTotalPesos += j.getCurrency().getMonto();
             }
       }
+
+        this.montoTotal = montoTotalPesos;
     }
 }
