@@ -33,6 +33,11 @@ public class PersonService {
     public List<Person> getAll(){
         List<Person> personList = this.personRepo.findAll();
         if(!personList.isEmpty()){
+            for(Person p : personList){
+                if(p instanceof Representante){
+                    ((Representante) p).calcularMontoTotal();
+                }
+            }
             return personList;
         }
         else{
