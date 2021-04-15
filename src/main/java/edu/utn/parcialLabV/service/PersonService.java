@@ -1,6 +1,5 @@
 package edu.utn.parcialLabV.service;
 
-import edu.utn.parcialLabV.model.Currency;
 import edu.utn.parcialLabV.model.Jugador;
 import edu.utn.parcialLabV.model.Person;
 import edu.utn.parcialLabV.model.Representante;
@@ -35,7 +34,7 @@ public class PersonService {
         if(!personList.isEmpty()){
             for(Person p : personList){
                 if(p instanceof Representante){
-                    ((Representante) p).calcularMontoTotal();
+                    ((Representante) p).calcularMontos();
                 }
             }
             return personList;
@@ -49,7 +48,7 @@ public class PersonService {
         Person p = this.personRepo.findById(id)
                     .orElseThrow( () -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
         if(p instanceof Representante){
-            ((Representante) p).calcularMontoTotal();
+            ((Representante) p).calcularMontos();
         }
 
         return p;
@@ -76,6 +75,7 @@ public class PersonService {
                 }
                 else{
                     jugadoresList.add((Jugador) jugador);
+                    personRepo.save(representante);
                 }
             }
             else{

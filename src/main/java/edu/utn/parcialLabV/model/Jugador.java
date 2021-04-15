@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Data
+@Entity
 public class Jugador extends Person{
     private Float peso;
     private Float altura;

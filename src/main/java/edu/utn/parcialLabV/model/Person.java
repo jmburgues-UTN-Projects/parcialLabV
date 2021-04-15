@@ -2,6 +2,7 @@ package edu.utn.parcialLabV.model;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.springframework.data.annotation.AccessType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,17 +17,15 @@ import javax.validation.constraints.NotNull;
         @JsonSubTypes.Type(value = Jugador.class, name = "JUGADOR"),
         @JsonSubTypes.Type(value = Representante.class, name = "REPRESENTANTE")
 })
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Person {
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
     @NotNull(message = "Person name is required.")
     private String name;
     @NotNull(message = "Person lastName is required.")
     private String lastName;
-
-    @org.springframework.data.annotation.AccessType(org.springframework.data.annotation.AccessType.Type.PROPERTY)
+    @AccessType(AccessType.Type.PROPERTY)
     public abstract PersonType personType();
 }
