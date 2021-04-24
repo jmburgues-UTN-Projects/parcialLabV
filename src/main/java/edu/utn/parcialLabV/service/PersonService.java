@@ -32,11 +32,6 @@ public class PersonService {
     public List<Person> getAll(){
         List<Person> personList = this.personRepo.findAll();
         if(!personList.isEmpty()){
-            for(Person p : personList){
-                if(p instanceof Representante){
-                    ((Representante) p).calcularMontos();
-                }
-            }
             return personList;
         }
         else{
@@ -47,10 +42,6 @@ public class PersonService {
     public Person findById(Integer id){
         Person p = this.personRepo.findById(id)
                     .orElseThrow( () -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
-        if(p instanceof Representante){
-            ((Representante) p).calcularMontos();
-        }
-
         return p;
     }
 
