@@ -8,12 +8,13 @@ import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @Data
+@Entity
 public class Jugador extends Person{
     private Float peso;
     private Float altura;
     private Integer goles;
     private Integer minutosJugados;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "currency_id")
     private Currency currency;
     private LocalDateTime fechaNacimiento;

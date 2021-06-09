@@ -12,8 +12,10 @@ import javax.persistence.*;
 @Entity
 public class Currency {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private CurrencyType currencyType;
     private Integer monto;
+
 
 }
