@@ -16,6 +16,4 @@ public class Currency {
     private Integer id;
     private CurrencyType currencyType;
     private Integer monto;
-
-
 }

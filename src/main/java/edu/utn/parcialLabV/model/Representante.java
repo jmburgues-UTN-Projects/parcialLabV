@@ -2,13 +2,14 @@ package edu.utn.parcialLabV.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import lombok.AllArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.List;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 public class Representante extends Person{

@@ -1,5 +1,7 @@
 package edu.utn.parcialLabV.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -7,8 +9,10 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
+@Builder
 public class Jugador extends Person{
     private Float peso;
     private Float altura;
