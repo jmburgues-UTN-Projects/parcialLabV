@@ -15,7 +15,7 @@ import java.util.Random;
 public class ApiCallService {
 
     @CircuitBreaker(name = "dolarApi", fallbackMethod = "fallbackDolar")
-    public DolarApiResponse getDolarPrice() throws IOException, InterruptedException {
+    public DolarApiResponse[] getDolarPrice() throws IOException, InterruptedException {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.dolarsi.com/api/api.php?type=dolar"))
@@ -23,7 +23,7 @@ public class ApiCallService {
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
-        return new Gson().fromJson(response.body(),DolarApiResponse.class);
+        return new Gson().fromJson(response.body(),DolarApiResponse[].class);
     }
 
     public DolarApiResponse fallbackDolar(Throwable t){
